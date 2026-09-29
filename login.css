@@ -1,0 +1,212 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Variables */
+:root {
+    --night: #0B0B0Bff;
+    --black: #030202ff;
+    --eerie-black: #1A1817ff;
+    --almond: rgb(233, 201, 205);
+    --brown-sugar: #B06D4Aff;
+    --warm-light-brown: #DAB88B;
+    --light-cream: #F3E9DD;
+    --off-white: #FDF6EC;
+    --soft-blue: #B7CADB;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--light-cream); /* Light cream background color */
+    color: var(--eerie-black); /* Eerie black text color */
+    overflow-y:auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--eerie-black); /* Eerie black background color */
+    color: var(--off-white); /* Off-white text color */
+    padding: 20px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    border-radius: 50%; /* Make the logo rounded */
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--off-white); 
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+nav ul li a:hover {
+    color: var(--warm-light-brown); /* Warm light brown color on hover */
+}
+
+footer {
+    background-color: var(--eerie-black); /* Eerie black background color */
+    color: var(--off-white); /* Off-white text color */
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Login Form Styles */
+.login-section {
+    padding: 40px 0;
+    background-color: var(--off-white); /* Off-white background color */
+}
+
+.login-form {
+    background-color: var(--light-cream); /* Light cream background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: var(--brown-sugar); /* Warm light brown header */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--eerie-black);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--eerie-black);
+    border-radius: 5px;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--warm-light-brown);
+    border: none;
+    border-radius: 5px;
+    color: var(--off-white);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-group button:hover {
+    background-color: var(--brown-sugar);
+}
+
+.signup-link, .forgot-password-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.signup-link a, .forgot-password-link a {
+    color: var(--brown-sugar);
+    text-decoration: none;
+}
+
+.signup-link a:hover, .forgot-password-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-title {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+}

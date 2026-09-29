@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giving Sphere Charity</title>
+    <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon link -->
+<style>
+/* Color Variables */
+:root {
+    --night: #0B0B0Bff;
+    --black: #030202ff;
+    --eerie-black: #1A1817ff;
+    --almond: #E9D8C9ff;
+    --brown-sugar: #B06D4Aff;
+    --warm-light-brown: #DAB88B;
+    --light-cream: #F3E9DD;
+    --off-white: #FDF6EC;
+}
+
+   
+header {
+    background: rgba(0, 1, 1, 0.8); /* Eerie black background color */
+    color: var(--off-white); /* Off-white text color */
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+}
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--light-cream); /* Light cream background color */
+    color: var(--eerie-black); /* Eerie black text color */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: scroll;
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    border-radius: 50%; /* Make the logo rounded */
+    margin-right: 15px;
+    width: 70px;
+    height: 70px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    
+}
+
+header h1 a{
+    text-decoration: none;
+    color: var(--off-white); /* Off-white text color */
+    
+}
+
+header h1 a:hover{
+    color: var(--brown-sugar);
+
+}
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--off-white); /* Off-white text color for links */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+nav ul li a:hover {
+    color: var(--brown-sugar); /* Warm light brown color on hover */
+}
+
+main {
+    flex: 1;
+}
+
+section {
+    padding: 40px 0;
+    background-color: var(--off-white); /* Off-white background color */
+    margin-bottom: 20px;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    color: var(--brown-sugar); /* Dark brown section headers */
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-content {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.text-content h2 {
+    margin-bottom: 10px;
+}
+
+.text-content p {
+    margin-right: 20px;
+}
+
+.content img {
+    flex: 1;
+    max-width: 50%;
+    height: auto;
+    margin-left: 20px;
+
+}
+
+.section-right .content {
+    flex-direction: row-reverse; /* Ensures image is on the left and text is on the right */
+}
+
+footer {
+    background-color: var(--eerie-black); /* Eerie black background color */
+    color: var(--off-white); /* Off-white text color */
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    display: inline-block; 
+    margin: 0 10px; 
+    font-size: 24px; /* Increase the font size of the icons */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-title {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .text-content,
+    .content img {
+        max-width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    .section-right .content {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+
+    section h2 {
+        font-size: 1.25em;
+    }
+}
+
+
+
+</style>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="container header-content">
+                <div class="logo-title">
+                    <img src="logo.png" alt="Logo" class="logo">
+                    <h1><a href="index.php">Giving Sphere Charity</a></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#aboutus">About Us</a></li>
+                       
+                        <li><a href="#mission">Our Mission</a></li>
+                       
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="login.php">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <section id="aboutus" class="section-left">
+                <div class="container">
+                    <div class="content">
+                        <div class="text-content">
+                            <h2>About Us</h2>
+                            <p>Welcome to Giving Sphere Charity, where compassion meets action. We are a dedicated team committed to making a meaningful difference in the lives of those in need. Founded in 2024, our organization has been at the forefront of community-driven initiatives, fostering positive change through collective efforts and unwavering dedication.
+
+                                 </p>
+                    </div>
+                        <img src="logo.png" alt="Our Mission" height="20px">
+                    </div>
+                </div>
+            </section>
+            
+            <section id="mission" class="section-left">
+                <div class="container">
+                    <div class="content">
+                        <div class="text-content">
+                            <h2>Our Mission</h2>
+                            <p>Our mission is to empower communities by providing essential resources and support to improve their quality of life. Together, we can change lives for the better. We focus on education, healthcare, and sustainable development to create lasting change and build a brighter future for all.</p>
+                        </div>
+                        <img src="mission.png" alt="Our Mission" height="20px">
+                    </div>
+                </div>
+            </section>
+
+            <section id="programs" class="section-right">
+                <div class="container">
+                    <div class="content">
+                        <img src="programs.jpg" alt="Programs">
+                        <div class="text-content">
+                            <h2>Programs</h2>
+                            <p>We offer a range of programs designed to address the most pressing needs of the communities we serve. Our education programs provide scholarships, school supplies, and tutoring services. Our healthcare initiatives include medical camps, vaccinations, and health education. Additionally, our sustainable development projects focus on clean water access, renewable energy, and agricultural support.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="events" class="section-left">
+                <div class="container">
+                    <div class="content">
+                        <div class="text-content">
+                            <h2>Events</h2>
+                            <p>Join us at our upcoming events to make a difference. We host fundraising galas, community clean-ups, health camps, and educational workshops throughout the year. These events not only raise vital funds but also increase awareness and foster community engagement. Check our calendar for the latest event updates and how you can participate.</p>
+                        </div>
+                        <img src="comslean.jpg" alt="Events">
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section-right">
+                <div class="container">
+                    <div class="content">
+                        <img src="contact.jpeg" alt="Contact Us">
+                        <div class="text-content">
+                            <h2>Contact Us</h2>
+                            <p>We would love to hear from you! Whether you have questions, need assistance, or want to get involved, please reach out. You can contact us via email at info@givingsphere.org or call us at (254) 29 307-009. Follow us on social media for the latest updates and volunteer opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>2024 Giving Sphere Charity - Where Compassion Meets Action.</p>
+              <!--  <a href="facebook.com" class="fa fa-facebook" style="font-size: 24px; text-decoration: none;"></a>
+                <a href="x.com" class="fa fa-twitter" style="font-size: 24px; text-decoration: none;"></a>
+                <a href="instagram.com" class="fa fa-instagram" style="font-size: 24px; text-decoration: none;"></a> -->
+                <a href="https://wa.me/254707962238" class="fa fa-whatsapp" style="font-size: 28px; text-decoration: none;"></a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

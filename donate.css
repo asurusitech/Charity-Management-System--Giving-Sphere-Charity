@@ -1,0 +1,133 @@
+:root {
+    --night: #0B0B0Bff;
+    --black: #030202ff;
+    --eerie-black: #1A1817ff;
+    --almond: #E9D8C9ff;
+    --brown-sugar: #B06D4Aff;
+    --warm-light-brown: #DAB88B;
+    --light-cream: #F3E9DD;
+    --off-white: #FDF6EC;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--off-white);
+    margin: 0;
+    padding: 0;
+    color: var(--black);
+    overflow-y: hidden; /* Remove vertical overflow */
+}
+
+header {
+    background-color: var(--eerie-black); /* Match footer color */
+    padding: 10px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+header h1 {
+    color: var(--off-white);
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--almond);
+}
+
+.donation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.donation-form {
+    background-color: var(--light-cream);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.donation-form h2 {
+    margin-bottom: 20px;
+    color: var(--eerie-black);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--eerie-black);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--eerie-black);
+    border-radius: 5px;
+    background-color: var(--off-white);
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--brown-sugar);
+    color: var(--off-white);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-group button:hover {
+    background-color: var(--almond);
+}
+
+footer {
+    background-color: var(--eerie-black); /* Footer color */
+    padding: 10px 0;
+    text-align: center;
+    color: var(--off-white);
+}

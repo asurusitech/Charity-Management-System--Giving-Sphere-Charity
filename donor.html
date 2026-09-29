@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Dashboard - Charity Management</title>
+    <link rel="stylesheet" href="donor.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMGWTnBSr12/37tmwv4IqPEsFt9kTP5BbbF0pT3" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-title">
+                <img src="https://via.placeholder.com/50" alt="Logo" class="logo">
+                <h1>Charity Management</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="donor_dashboard.php"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="donor.html"><i class="fas fa-user"></i> Donor</a></li>
+                    <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="donor-container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="donor_dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="donor_donations.html"><i class="fas fa-hand-holding-usd"></i> My Donations</a></li>
+                <li><a href="donor_new_donation.html"><i class="fas fa-donate"></i> Make a Donation</a></li>
+                <li><a href="donor_profile.html"><i class="fas fa-user-cog"></i> Update Profile</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Welcome, [Donor Name]</h2>
+            <p>Thank you for your generous support! Here you can manage your donations, view your donation history, and update your profile.</p>
+            <div class="donor-overview">
+                <div class="card">
+                    <h3>Total Donations</h3>
+                    <p>$[Total Amount]</p>
+                </div>
+                <div class="card">
+                    <h3>Recent Donations</h3>
+                    <ul>
+                        <li>$[Amount] to [Charity] on [Date]</li>
+                        <li>$[Amount] to [Charity] on [Date]</li>
+                        <!-- More recent donations -->
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Next Step</h3>
+                    <p><a href="donor_new_donation.html" class="button">Make a New Donation</a></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Charity Management. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

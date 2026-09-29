@@ -1,0 +1,60 @@
+/* Additional Styles */
+.user-info {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-info i {
+    margin-right: 10px; /* Space between icon and username */
+}
+
+.logout {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+}
+
+.user-info:hover .logout {
+    display: block;
+}
+
+.notification-icon {
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px; /* Space between icon and username */
+}
+
+.notification-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.full-notification {
+    display: none;
+}
+
+.user-info span {
+    margin-right: 15px; /* Adjust spacing as needed */
+}
+
+.user-info i {
+    margin-right: 10px; /* Space between icon and username */
+    position: relative;
+}
+
+.notification-icon {
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px; /* Space between icon and username */
+}

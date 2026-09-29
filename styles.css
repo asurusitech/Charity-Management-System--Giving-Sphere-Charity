@@ -1,0 +1,205 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Variables */
+:root {
+    --night: #0B0B0Bff;
+    --black: #030202ff;
+    --eerie-black: #1A1817ff;
+    --almond: #E9D8C9ff;
+    --brown-sugar: #B06D4Aff;
+    --warm-light-brown: #DAB88B;
+    --light-cream: #F3E9DD;
+    --off-white: #FDF6EC;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--light-cream); /* Light cream background color */
+    color: var(--eerie-black); /* Eerie black text color */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: scroll;
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--eerie-black); /* Eerie black background color */
+    color: var(--off-white); /* Off-white text color */
+    padding: 20px 0;
+    position: sticky;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    border-radius: 50%; /* Make the logo rounded */
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--off-white); /* Off-white text color for links */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+nav ul li a:hover {
+    color: var(--warm-light-brown); /* Warm light brown color on hover */
+}
+
+main {
+    flex: 1;
+}
+
+section {
+    padding: 40px 0;
+    background-color: var(--off-white); /* Off-white background color */
+    margin-bottom: 20px;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    color: var(--brown-sugar); /* Dark brown section headers */
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-content {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.text-content h2 {
+    margin-bottom: 10px;
+}
+
+.text-content p {
+    margin-right: 20px;
+}
+
+.content img {
+    flex: 1;
+    max-width: 50%;
+    height: auto;
+    margin-left: 20px;
+}
+
+.section-right .content {
+    flex-direction: row-reverse; /* Ensures image is on the left and text is on the right */
+}
+
+footer {
+    background-color: var(--eerie-black); /* Eerie black background color */
+    color: var(--off-white); /* Off-white text color */
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    display: inline-block; 
+    margin: 0 10px; 
+    font-size: 24px; /* Increase the font size of the icons */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-title {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .text-content,
+    .content img {
+        max-width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    .section-right .content {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+
+    section h2 {
+        font-size: 1.25em;
+    }
+}

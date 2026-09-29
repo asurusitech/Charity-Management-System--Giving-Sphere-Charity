@@ -1,0 +1,243 @@
+<?php
+
+require 'vendor/autoload.php';
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+include 'connection.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+
+// PayPal API credentials
+$clientId = 'AXrT3vw2kROpeuLx2ImHIyioCQUCwjhtK7D3K7B6Xp33gNd7FsG5rmT3w8Q2pNh-dQQZaQnHBF-oaEYv';
+$clientSecret = 'ECbqiNvCE6glvGB1vmxG5yNpVc90qFz7gn7xXplOK6uVe6UijQLxLVpX8-UazmDejCBegGzcUvzkegRq';
+
+// Function to get PayPal access token
+function getAccessToken($clientId, $clientSecret) {
+    $client = new Client();
+    try {
+        $response = $client->post('https://api.sandbox.paypal.com/v1/oauth2/token', [
+            'auth' => [$clientId, $clientSecret],
+            'form_params' => [
+                'grant_type' => 'client_credentials',
+            ],
+        ]);
+        $data = json_decode((string)$response->getBody());
+        return $data->access_token;
+    } catch (RequestException $e) {
+        // Handle error
+        return null;
+    }
+}
+
+// Function to get transaction status from PayPal
+function getTransactionStatus($transactionId, $accessToken) {
+    $client = new Client();
+    try {
+        $response = $client->get("https://api.paypal.com/v1/payments/payment/{$transactionId}", [
+            'headers' => [
+                'Authorization' => "Bearer {$accessToken}",
+            ],
+        ]); $data = json_decode((string)$response->getBody());
+        return $data->state; // Assuming 'state' represents the payment status in PayPal's API
+    } catch (RequestException $e) {
+        echo "RequestException: " . $e->getMessage() . "<br>";
+        if ($e->hasResponse()) {
+            echo "Response: " . $e->getResponse()->getBody()->getContents() . "<br>";
+        }
+        return null;
+    }
+}
+
+// Get PayPal access token
+$accessToken = getAccessToken($clientId, $clientSecret);
+if (!$accessToken) {
+    echo "Error getting PayPal access token.";
+    exit();
+}
+
+
+
+// Fetch donations details including donor names and payment status from the database
+$query = $database->prepare("SELECT d.donation_id, d.amount, d.donation_date, 
+           d.payment_status, d.payment_method, d.created_at, d.updated_at, d.beneficiary_id, d.event_id, 
+           d.transaction_id, donors.first_name, donors.last_name 
+    FROM donations d
+    JOIN donors ON d.donorid = donors.donorid
+");
+$query->execute();
+$result = $query->get_result();
+
+$donations = [];
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        if (isset($row['transaction_id'])) {
+            // Get the updated transaction status from PayPal
+            $status = getTransactionStatus($row['transaction_id'], $accessToken);
+            if ($status && $status != $row['payment_status']) {
+                // Update the status in the database if different
+                $stmt = $database->prepare("UPDATE donations SET payment_status = ? WHERE donation_id = ?");
+                $stmt->bind_param("si", $status, $row['donation_id']);
+                $stmt->execute();
+                $row['payment_status'] = $status; // Update the status in the local array
+            }
+        }
+        $donations[] = $row;
+    }
+} else {
+    echo "Error fetching donations: " . $database->error;
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donations - Giving Sphere Charity</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <style> 
+        /* Table Styling */
+        .user-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .user-table table th,
+        .user-table table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .user-table table th {
+            background-color: #1A1817; /* Eerie black */
+            color: #FDF6EC; /* Off-white */
+        }
+
+        .user-table table tbody tr:nth-child(odd) {
+            background-color: #F3E9DD; /* Light cream */
+        }
+
+        .user-table table tbody tr:nth-child(even) {
+            background-color: #FDF6EC; /* Off-white */
+        }
+
+        /* Button Styling */
+        .add-donor-btn {
+            background-color: #4CAF50; /* Green */
+            color: #FFF;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-donor-btn:hover {
+            background-color: #45a049; /* Darker green */
+        }
+
+        /* Aligning the button to the right of the title */
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-actions h2 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-title">
+                <img src="logo.png" alt="Logo" class="logo">
+                <h1>Giving Sphere Charity</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="admin.php">Admin</a></li>
+                    <li><a href="logout.php">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="admin_dashboard.php">Dashboard</a></li>
+                <li><a href="admin_users.php">Donors</a></li>
+                <li><a href="admin_beneficiaries.php">Beneficiaries</a></li>
+                <li class="active"><a href="viewdonations.php">Donations</a></li>
+                <li><a href="admin_events.php">Events</a></li>
+                <li>
+                    <a href="#" class="sub-link-toggle">Reports</a>
+                    <ul class="sub-menu">
+                        <li><a href="donatedusers.php">Users who have donated</a></li>
+                        <li><a href="#">Donations Report</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="header-actions">
+                <h2>Donations (<?php echo htmlspecialchars((string)count($donations)); ?>)</h2>
+            </div>
+            <div class="user-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Donation ID</th>
+                            <th>Transaction ID</th>
+                            <th>Donor Name</th>
+                            <th>Amount</th>
+                            <th>Donation Date</th>
+                            <th>Payment Method</th>
+                            <th>Payment Status</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($donations)): ?>
+                            <?php foreach ($donations as $donation): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars((string)$donation['donation_id']); ?></td>
+                                    <td><?php echo htmlspecialchars((string)$donation['transaction_id']); ?></td>
+                                    <td><?php echo htmlspecialchars($donation['first_name'] . ' ' . $donation['last_name'] ?? ''); ?></td>
+                                    <td>Ksh <?php echo number_format((float)$donation['amount'], 2); ?></td>
+                                    <td><?php echo htmlspecialchars((string)$donation['donation_date']); ?></td>
+                                    <td><?php echo htmlspecialchars((string)$donation['payment_status']); ?></td>
+                                    <td><?php echo htmlspecialchars((string)$donation['payment_method']); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7">No donations found.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><?php echo date('Y'); ?> Giving Sphere Charity - Where Compassion Meets Action.</p>
+            <a href="https://wa.me/254707962238" class="fa fa-whatsapp" style="font-size: 28px; text-decoration: none;"></a>
+        </div>
+    </footer>
+</body>
+</html>

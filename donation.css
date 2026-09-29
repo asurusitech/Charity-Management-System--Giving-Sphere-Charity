@@ -1,0 +1,113 @@
+ table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .status-completed {
+            color: #4CAF50; /* Green */
+        }
+
+        .status-pending {
+            color: #FFC107; /* Amber */
+        }
+
+        .status-canceled {
+            color: #f44336; /* Red */
+        }
+
+        .user-info {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-info i {
+            margin-right: 10px; /* Space between icon and username */
+        }
+
+        .logout {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 5px;
+        }
+
+        .user-info:hover .logout {
+            display: block;
+        }
+
+        .update-btn {
+            background-color: #4CAF50;
+        }
+
+        .action-buttons a {
+            margin-right: 10px;
+            color: #FFF;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .action-buttons .update-btn {
+            background-color: #4CAF50; /* Green */
+            margin-right: 10px;
+            color: #FFF;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            border: #4CAF50;
+        }
+
+        table .action-buttons .delete-btn {
+            background-color: #f44336; /* Red */
+        }
+
+        .full-notification {
+            display: none;
+        }
+        .user-info {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+        .user-info span {
+            margin-right: 15px; /* Adjust spacing as needed */
+        }
+        .user-info i {
+            margin-right: 10px; /* Space between icon and username */
+            position: relative;
+        }
+        .notification-icon {
+            position: relative;
+            cursor: pointer;
+            margin-right: 10px; /* Space between icon and username */
+        }
+        .notification-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+       

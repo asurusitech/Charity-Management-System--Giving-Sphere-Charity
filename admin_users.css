@@ -1,0 +1,271 @@
+        /* Table Styling */
+        .user-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .user-table table th,
+        .user-table table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .user-table table th {
+            background-color: #1A1817; /* Eerie black */
+            color: #FDF6EC; /* Off-white */
+        }
+
+        .user-table table tbody tr:nth-child(odd) {
+            background-color: #F3E9DD; /* Light cream */
+        }
+
+        .user-table table tbody tr:nth-child(even) {
+            background-color: #FDF6EC; /* Off-white */
+        }
+
+        .user-table table .action-buttons a {
+            margin-right: 10px;
+            color: #FFF;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .user-table table .action-buttons .update-btn {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .user-table table .action-buttons .delete-btn {
+            background-color: #f44336; /* Red */
+        }
+
+        /* Button Styling */
+        .add-donor-btn {
+            background-color: #4CAF50; /* Green */
+            color: #FFF;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-donor-btn:hover {
+            background-color: #45a049; /* Darker green */
+        }
+
+        /* Aligning the button to the right of the title */
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-actions h2 {
+            margin: 0;
+
+            
+        }
+        /* Search Field Styling */
+.header-actions form input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/* Search Button Styling */
+.header-actions form button[type="submit"] {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header-actions form button[type="submit"]:hover {
+    background-color: #45a049; /* Darker green */
+}
+.user-info {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+        .user-info i {
+            margin-right: 10px; /* Space between icon and username */
+        }
+        .notification {
+            margin-left: 15px; /* Space between username and notification icon */
+            position: relative;
+            cursor: pointer;
+        }
+        .notification i {
+            font-size: 18px; /* Adjust size as needed */
+        }
+        .notification-bubble {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            width: 200px;
+        }
+        .notification:hover .notification-bubble {
+            display: block;
+        }
+        .logout {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 5px;
+        }
+        .user-info:hover .logout {
+            display: block;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1 1 calc(33% - 40px);
+            text-align: center;
+            min-width: 200px;
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .card p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        /* Table Styling */
+        .report-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .report-table table th,
+        .report-table table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .report-table table th {
+            background-color: #1A1817; /* Eerie black */
+            color: #FDF6EC; /* Off-white */
+        }
+
+        .report-table table tbody tr:nth-child(odd) {
+            background-color: #F3E9DD; /* Light cream */
+        }
+
+        .report-table table tbody tr:nth-child(even) {
+            background-color: #FDF6EC; /* Off-white */
+        }
+
+        /* Sidebar Styling */
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #B06D4Aff; /* Green with transparency */
+        }
+
+        .sidebar ul .active a {
+            background-color: #B06D4Aff; /* Green with transparency */
+            color: #FFF;
+        }
+
+        .sidebar .sub-menu {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .sidebar .sub-menu.active {
+            display: block;
+        }
+        .notification {
+            margin-left: 15px; /* Space between username and notification icon */
+            position: relative;
+            cursor: pointer;
+        }
+        .notification i {
+            font-size: 18px; /* Adjust size as needed */
+        }
+        .notification-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+        .notification-bubble {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            width: 200px;
+            z-index: 1000;
+        }
+        .notification:hover .notification-bubble {
+            display: block;
+        }
+        .logout {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 5px;
+        }
+        .user-info:hover .logout {
+            display: block;
+        }
+
